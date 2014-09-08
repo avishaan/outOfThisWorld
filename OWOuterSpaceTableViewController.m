@@ -62,18 +62,14 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
   // Return the number of sections.
-  return 2;
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
   // Return the number of rows in the section.
-  if (section == 0){
-    return 3;
-  } else {
-    return 2;
-  }
+  return [self.planets count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -85,7 +81,7 @@
                                       forIndexPath:indexPath];
 
   // Configure the cell...
-  cell.textLabel.text = [NSString stringWithFormat:@"Row %i", indexPath.row];
+  cell.textLabel.text = [self.planets objectAtIndex: indexPath.row];
   
   if (indexPath.section == 0){
     cell.backgroundColor = [UIColor redColor];
