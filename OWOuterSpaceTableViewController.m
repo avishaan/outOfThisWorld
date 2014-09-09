@@ -60,6 +60,8 @@
 //  
 //  NSString *blueString = [myDictionary objectForKey:@"ocean color"];
 //  NSLog(@"%@", blueString);
+  NSNumber *myNumber = [NSNumber numberWithInt: 5];
+  NSLog(@"%@", myNumber);
 }
 
 - (void)didReceiveMemoryWarning {
