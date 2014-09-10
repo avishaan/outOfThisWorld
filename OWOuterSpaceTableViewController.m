@@ -32,7 +32,6 @@
   // bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
   
-  self.planets = [NSMutableArray new];
   NSString *planet1 = @"Mercury";
   NSString *planet2 = @"Venus";
   NSString *planet3 = @"Earth";
@@ -42,14 +41,8 @@
   NSString *planet7 = @"Uranus";
   NSString *planet8 = @"Neptune";
   
-  [self.planets addObject:planet1];
-  [self.planets addObject:planet2];
-  [self.planets addObject:planet3];
-  [self.planets addObject:planet4];
-  [self.planets addObject:planet5];
-  [self.planets addObject:planet6];
-  [self.planets addObject:planet7];
-  [self.planets addObject:planet8];
+  self.planets = [[NSMutableArray alloc] initWithObjects: planet1, planet2, planet3,
+                  planet4, planet5, planet6, planet7, planet8];
   
 //  NSMutableDictionary *myDictionary = [NSMutableDictionary new];
 //  NSString *firstColor = @"red";
