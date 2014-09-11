@@ -7,6 +7,8 @@
 //
 
 #import "OWOuterSpaceTableViewController.h"
+#import "AstronomicalData.h"
+#import "OWSpaceObject.h"
 
 @interface OWOuterSpaceTableViewController ()
 
@@ -32,18 +34,12 @@
   // bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
   
-  NSString *planet1 = @"Mercury";
-  NSString *planet2 = @"Venus";
-  NSString *planet3 = @"Earth";
-  NSString *planet4 = @"Mars";
-  NSString *planet5 = @"Jupiter";
-  NSString *planet6 = @"Saturn";
-  NSString *planet7 = @"Uranus";
-  NSString *planet8 = @"Neptune";
-  
-  self.planets = [[NSMutableArray alloc] initWithObjects: planet1, planet2, planet3,
-                  planet4, planet5, planet6, planet7, planet8];
-  
+  for (NSMutableDictionary *planet in [AstronomicalData allKnownPlanets]) {
+    NSString *imageFileName = [NSString stringWithFormat:@"%@.jpg", planet[PLANET_NAME]];
+    OWSpaceObject *planetObj = [[OWSpaceObject alloc] initWithData:planet andImage:[UIImage imageNamed:imageFileName]];
+    [self.planets addObject:planetObj];
+    
+  }
 //  NSMutableDictionary *myDictionary = [NSMutableDictionary new];
 //  NSString *firstColor = @"red";
 //  [myDictionary setObject:firstColor forKey:@"firetruck color"];
