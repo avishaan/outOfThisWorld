@@ -33,7 +33,7 @@
   // Uncomment the following line to display an Edit button in the navigation
   // bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-  
+  self.planets = [[NSMutableArray alloc] init];
   for (NSMutableDictionary *planet in [AstronomicalData allKnownPlanets]) {
     NSString *imageFileName = [NSString stringWithFormat:@"%@.jpg", planet[PLANET_NAME]];
     OWSpaceObject *planetObj = [[OWSpaceObject alloc] initWithData:planet andImage:[UIImage imageNamed:imageFileName]];
@@ -70,6 +70,7 @@
     numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
   // Return the number of rows in the section.
+  NSLog(@"%i", [self.planets count]);
   return [self.planets count];
 }
 
@@ -82,13 +83,14 @@
                                       forIndexPath:indexPath];
 
   // Configure the cell...
-  cell.textLabel.text = [self.planets objectAtIndex: indexPath.row];
+  OWSpaceObject *planet = [self.planets objectAtIndex:indexPath.row];
+  cell.textLabel.text = planet.name;
+  cell.detailTextLabel.text = planet.nickname;
+  cell.imageView.image = planet.spaceImage;
   
-  if (indexPath.section == 0){
-    cell.backgroundColor = [UIColor redColor];
-  } else {
-    cell.backgroundColor = [UIColor blueColor];
-  }
+  cell.backgroundColor = [UIColor clearColor];
+  cell.textLabel.textColor = [UIColor whiteColor];
+  cell.detailTextLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
 
   return cell;
 }
